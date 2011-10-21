@@ -1,21 +1,21 @@
 <?php
 
-namespace Phunk\Collaborator;
+namespace Soul\Collaborator;
 
-class Mashup implements \Phunk\Collaborator
+class Mashup implements \Soul\Collaborator
 {
     /**
      * @static
-     * @param callable $app
+     * @param callback $app
      * @param array $options
      * @return callable
      */
-    static function collaborate(callable $app, array $options = array())
+    static function collaborate($app, array $options = array())
     {
         foreach (static::$collaborators as $collaborator) {
-            $collaborator = \Phunk\Util::_fix_class_name($collaborator, __NAMESPACE__);
+            $collaborator = \Soul\Util::_fix_class_name($collaborator, __NAMESPACE__);
 
-            /* @var $collaborator \Phunk\Collaborator */
+            /* @var $collaborator \Soul\Collaborator */
             $app = $collaborator::collaborate($app, $options);
         }
         return $app;
