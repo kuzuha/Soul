@@ -1,13 +1,14 @@
 <?php
 
-namespace Phunk;
+namespace Soul;
 
 interface Handler
 {
     /**
      * @abstract
-     * @param callable $app
+     * @param callback
+     * $app
      * @return void
      */
-    function run(callable $app);
+    function run($app);
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace Phunk;
+namespace Soul;
 
 interface Collaborator
 {
     /**
      * @static
      * @abstract
-     * @param callable $app
+     * @param callback $app
      * @param array $options
      * @return callable
      */
-    static function collaborate(callable $app, array $options = array());
+    static function collaborate($app, array $options = array());
 }

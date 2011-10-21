@@ -1,16 +1,16 @@
 <?php
 
-namespace Phunk\Collaborator;
+namespace Soul\Collaborator;
 
-class OutputBuffering implements \Phunk\Collaborator
+class OutputBuffering implements \Soul\Collaborator
 {
     /**
      * @static
-     * @param callable $app
+     * @param callback $app
      * @param array $options
      * @return callable
      */
-    static function collaborate(callable $app, array $options = array())
+    static function collaborate($app, array $options = array())
     {
         return function(array $env) use ($app)
         {

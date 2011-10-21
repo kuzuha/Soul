@@ -1,5 +1,5 @@
 <?php
 $app = function($env)
 {
-    return [200, [], 'hello, world'];
+    return array(200, array(), 'hello, world');
 };

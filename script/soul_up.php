@@ -1,4 +1,4 @@
 <?php
 require 'bootstrap.php';
 array_shift($argv);
-Phunk\Util::phunk_up(realpath($argv[0]));
+Soul\Util::soul_up(realpath($argv[0]));

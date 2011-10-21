@@ -1,8 +1,8 @@
 <?php
 
-namespace Phunk;
+namespace Soul;
 
-use Phunk\Loader;
+use Soul\Loader;
 
 class Util
 {
@@ -19,7 +19,7 @@ class Util
                 $options = $collaborator;
                 $collaborator = $key;
             }
-            $collaborator = self::_fix_class_name($collaborator, 'Phunk\\Collaborator');
+            $collaborator = self::_fix_class_name($collaborator, 'Soul\\Collaborator');
             /* @var $collaborator \Phunk\Collaborator */
             $app = $collaborator::collaborate($app, $options);
         }
@@ -47,7 +47,7 @@ class Util
      * @param string|callable $phunki
      * @param array $options
      */
-    static function phunk_up($phunki, array $options = array())
+    static function soul_up($phunki, array $options = array())
     {
         if (is_callable($phunki)) {
             $app = $phunki;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Phunk\Handler;
+namespace Soul\Handler;
 
-class Simple implements \Phunk\Handler
+class Simple implements \Soul\Handler
 {
     /**
      * @internal
@@ -64,10 +64,10 @@ class Simple implements \Phunk\Handler
     );
 
     /**
-     * @param callable $app
+     * @param callback $app
      * @return void
      */
-    function run(callable $app)
+    function run($app)
     {
         $env = $this->_build_env();
         $res = $app($env);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Phunk\Collaborator;
+namespace Soul\Collaborator;
 
 class Nice extends Mashup
 {

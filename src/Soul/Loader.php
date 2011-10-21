@@ -1,6 +1,6 @@
 <?php
 
-namespace Phunk;
+namespace Soul;
 
 class Loader
 {
@@ -13,6 +13,9 @@ class Loader
     {
         switch (PHP_SAPI) {
             case 'cli':
+                if (version_compare(PHP_VERSION, '5.4.0beta1') < 0) {
+                    throw new \Exception('handler for cli does not implemented.');
+                }
                 return self::load('BuiltinWebServer', $options);
             default:
                 return self::load('Simple', $options);
@@ -27,7 +30,7 @@ class Loader
      */
     static function load($handler, array $options = array())
     {
-        $class = "Phunk\\Handler\\$handler";
+        $class = "Soul\\Handler\\$handler";
         return new $class();
     }
 }

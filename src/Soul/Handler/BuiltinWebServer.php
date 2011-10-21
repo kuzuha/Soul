@@ -1,8 +1,8 @@
 <?php
 
-namespace Phunk\Handler;
+namespace Soul\Handler;
 
-class BuiltinWebServer implements \Phunk\Handler
+class BuiltinWebServer implements \Soul\Handler
 {
     /**
      * @internal
@@ -21,11 +21,11 @@ class BuiltinWebServer implements \Phunk\Handler
     public $_pipes;
 
     /**
-     * @param callable $app
+     * @param callback $app
      * @throws \Exception
      * @return void
      */
-    function run(callable $app)
+    function run($app)
     {
         $this->_build_server_process();
         print "server started at http://localhost:1985/\n";
@@ -117,14 +117,14 @@ class BuiltinWebServer implements \Phunk\Handler
         $phunki = realpath($argv[0]);
         $trace = debug_backtrace(false, 4);
         if (isset($trace[3]) &&
-            preg_match('/' . preg_quote(DIRECTORY_SEPARATOR, '/') . 'phunk_up\\.php$/', $trace[3]['file'])
+            preg_match('/' . preg_quote(DIRECTORY_SEPARATOR, '/') . 'soul_up\\.php$/', $trace[3]['file'])
         ) {
             $code = <<<CODE
 <?php
 set_include_path('$include_path');
 require_once 'Autoloader/Simple.php';
 spl_autoload_register(array('Autoloader_Simple', 'load'));
-Phunk\Util::phunk_up('$phunki');
+Soul\Util::soul_up('$phunki');
 CODE;
         } else {
             $code = "<?php require '$phunki';";
