@@ -14,7 +14,10 @@ class Loader
         switch (PHP_SAPI) {
             case 'cli':
                 if (version_compare(PHP_VERSION, '5.4.0beta1') < 0) {
-                    throw new \Exception('handler for cli does not implemented.');
+                    if (isset($_SERVER['beat_version'])) {
+                        return self::load('Beat', $options);
+                    }
+                    return self::load('BeatWebServer', $options);
                 }
                 return self::load('BuiltinWebServer', $options);
             default:
