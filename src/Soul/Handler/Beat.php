@@ -1,8 +1,8 @@
 <?php
 
-namespace Phunk\Handler;
+namespace Soul\Handler;
 
-class Beat extends Simple implements \Phunk\Handler
+class Beat extends Simple implements \Soul\Handler
 {
     /**
      * @internal
