@@ -7,11 +7,11 @@ use Soul\Loader;
 class Util
 {
     /**
-     * @param callable $app
+     * @param callback $app
      * @param array $collaborators
      * @return void
      */
-    static function tune_up(callable &$app, array $collaborators)
+    static function tune_up(&$app, array $collaborators)
     {
         foreach ($collaborators as $key => $collaborator) {
             $options = array();
@@ -28,7 +28,7 @@ class Util
     /**
      * @static
      * @param string $phunki
-     * @return callable
+     * @return callback
      */
     static function load_phunki($phunki)
     {
@@ -44,7 +44,7 @@ class Util
 
     /**
      * @static
-     * @param string|callable $phunki
+     * @param string|callback $phunki
      * @param array $options
      */
     static function soul_up($phunki, array $options = array())
@@ -71,8 +71,11 @@ class Util
      */
     static function _fix_class_name($class_name, $namespace)
     {
-        if (0 === preg_match('/^\\\\?' . preg_quote($namespace, '/') . '\\\\/', $class_name)) {
-            $class_name = $namespace . '\\' . $class_name;
+        if ('\\' === $class_name[0]) {
+            return $class_name;
+        }
+        if (0 === preg_match('/^' . preg_quote("$namespace\\", '/') . '/', $class_name)) {
+            $class_name = "$namespace\\$class_name";
         }
         return $class_name;
     }

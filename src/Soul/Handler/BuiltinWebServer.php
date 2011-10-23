@@ -105,11 +105,10 @@ class BuiltinWebServer implements \Soul\Handler
      */
     function _build_temporary_file()
     {
-        global $argv;
         $temporary_dir = sys_get_temp_dir();
         $this->_temporary_file = tempnam($temporary_dir, 'phunk');
         $include_path = get_include_path();
-        $phunki = realpath($argv[0]);
+        $phunki = realpath($_SERVER['argv'][1]);
         $trace = debug_backtrace(false);
         if (isset($trace[3]) &&
             preg_match('/' . preg_quote(DIRECTORY_SEPARATOR, '/') . 'soul_up\\.php$/', $trace[3]['file'])

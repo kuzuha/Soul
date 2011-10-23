@@ -9,7 +9,7 @@ interface Collaborator
      * @abstract
      * @param callback $app
      * @param array $options
-     * @return callable
+     * @return callback
      */
     static function collaborate($app, array $options = array());
 }

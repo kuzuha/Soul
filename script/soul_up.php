@@ -1,4 +1,3 @@
 <?php
 require 'bootstrap.php';
-array_shift($argv);
-Soul\Util::soul_up(realpath($argv[0]));
+Soul\Util::soul_up($argv[1], array('handler' => $argv[2]));

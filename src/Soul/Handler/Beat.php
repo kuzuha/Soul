@@ -1,30 +1,26 @@
 <?php
 
-namespace Soul\Handler;
+namespace Phunk\Handler;
 
-class Beat extends Simple implements \Soul\Handler
+class Beat extends Simple implements \Phunk\Handler
 {
-
     /**
      * @internal
-     * @param array $res
-     * @return void
+     * @param int $status
+     * @param array $headers
      */
-    function _handle_response(array $res)
+    function _output_headers($status, array $headers)
     {
-        array_unshift($res[1], "HTTP/1.1 {$res[0]} {$this->_status_code[$res[0]]}");
-        foreach ($res[1] as $header) {
-            print("$header\r\n");
-        }
-        print "\r\n";
-
-        $body = $res[2];
-        if (is_string($body)) {
-            print $body;
-        } elseif (is_array($body)) {
-            foreach ($body as $string) {
-                print $string;
+        print "HTTP/1.1 {$status} {$this->_status_code[$status]}\r\n";
+        foreach ($headers as $key => $values) {
+            if (false === is_array($values)) {
+                print "$key: $values\r\n";
+                continue;
+            }
+            foreach ($values as $value) {
+                print "$key: $value\r\n";
             }
         }
+        print "\r\n";
     }
 }

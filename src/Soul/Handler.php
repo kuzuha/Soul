@@ -6,8 +6,7 @@ interface Handler
 {
     /**
      * @abstract
-     * @param callback
-     * $app
+     * @param callback $app
      * @return void
      */
     function run($app);

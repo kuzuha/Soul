@@ -8,7 +8,7 @@ class OutputBuffering implements \Soul\Collaborator
      * @static
      * @param callback $app
      * @param array $options
-     * @return callable
+     * @return callback
      */
     static function collaborate($app, array $options = array())
     {
